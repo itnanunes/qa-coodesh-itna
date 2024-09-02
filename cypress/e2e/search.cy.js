@@ -3,7 +3,7 @@
 
 describe('Busca por shirt', () => {
 
-  before(() => {
+  beforeEach(() => {
     cy.visit('/');
     cy.searchProduct('shirt');
     cy.get('.product-item').last().click();

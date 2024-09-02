@@ -36,7 +36,6 @@ Cypress.Commands.add('fillRegisterForm', () => {
   cy.get('input[name="firstname"]').should('be.visible').type(fakeData.firstname);
   cy.get('input[name="lastname"]').should('be.visible').type(fakeData.lastname);
   cy.get('input[name="email"]').should('be.visible').type(fakeData.email);
-  //cy.get('input[name="password"]').should('be.visible').type(fakeData.password);
   cy.get('#password').should('be.visible').type(fakeData.password);
   cy.get('input[name="password_confirmation"]').should('be.visible').type(fakeData.password);
 });

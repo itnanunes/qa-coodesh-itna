@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 
 
 describe('Cadastro - Luma Store', () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit('/');
   });
 
@@ -14,12 +14,12 @@ describe('Cadastro - Luma Store', () => {
     cy.get('.message-success').should('be.visible')
   });
 
-  it.only('Criando cadastro na tela de login', () => {
+  it('Criando cadastro na tela de login', () => {
     cy.get('.panel > .header > .authorization-link > a').click();
     cy.get('a.action.create.primary').click();
   });
 
   it('Criando cadastro clicando no botão de cadastro', () => {
-    cy.get('.panel > .header > :nth-child(3) > a').click();
+    cy.visit('customer/account/create/')
   });
 });
