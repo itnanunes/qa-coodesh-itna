@@ -1,65 +1,82 @@
-# Q.A Challenge Luma Store
-
-Este é um desafio para que possamos ver as suas habilidades como QA/Tester.
-
-Nesse desafio você deverá testar de forma automatizada o site Luma Store. O projeto a ser desenvolvido por você tem como objetivo exibir executar ações na loja conforme indicado nos casos de uso que estão logo abaixo.
-
-[SPOILER] As instruções de entrega e apresentação do challenge estão no final deste Readme (=
-
-### Antes de começar
- 
-- Considere como prazo limite da avaliação o período a partir do início do teste. Se, por algum motivo, não for possível concluir dentro deste prazo, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documente todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes quanto o seu processo de pensamento e decisões à medida que as completa, por isso, tente documentar e apresentar as suas hipóteses e decisões na medida do possível.
+Desafio de Automação de Testes - Luma Store
 
 
-#### Tecnologias:
-- Ferramenta: Ghost Inspector, Selenium, Cypress, Robot Framework, ou outro de seu conhecimento
-- Adicionais: Cucumber ou outros plugins necessários para configurar a ferramenta
+1. Escolha da Ferramenta de Teste
+Ferramenta Escolhida: Cypress
+Motivo da Escolha:
 
-## Teste
+Vantagens:
+Integração direta com JavaScript e Node.js, amplamente usados no desenvolvimento web.
+Interface intuitiva que permite visualizar os testes em tempo real, facilitando a identificação de erros.
+Monitoramento e interceptação de requisições HTTP, útil para verificar o carregamento de páginas e respostas da API.
+Suporte robusto a testes end-to-end, com comandos simplificados para interação com elementos da interface do usuário.
+Suporte a testes assíncronos e esperas automáticas, facilitando a sincronização com o tempo de carregamento dos elementos da página.
+Ferramentas Não Escolhidas:
+Selenium:
+Desvantagens: Configuração mais complexa, requer instalação de drivers específicos para cada navegador. Testes podem ser mais lentos em cenários complexos.
+Robot Framework:
+Desvantagens: Curva de aprendizado mais acentuada, especialmente para quem não está familiarizado com a sintaxe baseada em palavras-chave. Indicado para grandes suítes de testes envolvendo múltiplos tipos de sistemas.
+Ghost Inspector:
+Desvantagens: Ferramenta baseada em nuvem que pode limitar a flexibilidade de customização e integração com pipelines de CI/CD.
+2. Casos de Uso a Serem Testados
+Caso de Uso 1: Verificar Carregamento da Home Page
+Descrição: Verificar se a página inicial da Luma Store carrega corretamente.
+Cenário:
 
-Neste desafio aplicaremos os conceitos de teste caixa preta, onde testaremos a página https://magento.softwaretestingboard.com
+Acessar a página principal (https://magento.softwaretestingboard.com).
+Verificar se os principais elementos da home (menu, banner, rodapé) estão visíveis e carregados.
+Caso de Uso 2: Busca por 'shirt' e Revisão de Resultados
+Descrição: Buscar por "shirt" e verificar se a página de resultados carrega corretamente.
+Cenário:
 
-> Nota: utilize dados fictícios criados através do site https://randomuser.me
+Inserir o termo "shirt" no campo de busca.
+Verificar se a página de resultados é carregada e os produtos relacionados são exibidos.
+Diferencial 1: Clicar no último produto sugerido após a busca.
+Diferencial 4: Adicionar um comentário em um produto aleatório do catálogo de moda masculina no carrinho.
+Caso de Uso 3: Adicionar Produto no Carrinho
+Descrição: Selecionar um produto e adicioná-lo ao carrinho.
+Cenário:
 
-**Obrigatório 1** - Para realizar o teste precisamos escolher a ferramenta de teste. Explicar o por quê da escolha, as vantagens e desvantagens dos que não foram escolhidos.
+Escolher um produto da lista de resultados.
+Adicionar o produto ao carrinho.
+Verificar se o produto foi adicionado com sucesso.
+Diferencial 3: Adicionar um produto aleatório do catálogo de moda masculina no carrinho.
+Caso de Uso 4: Realizar Checkout
+Descrição: Realizar o processo de checkout com o produto adicionado ao carrinho.
+Cenário:
 
-**Obrigatório 2** - Você deverá atender aos seguintes casos de uso:
+Acessar o carrinho.
+Proceder para o checkout.
+Inserir os dados de pagamento fictícios e finalizar a compra.
+3. Recursos e Funcionalidades Adicionais Implementados
+Criar Conta na Tela de Login/Cadastro
+Descrição: Criar uma conta e abordar o captcha.
+Cenário:
 
-- Se a página está carregando corretamente a home page;
-- Buscar por `shirt` no menu superior e revisar se a página de resultados carregou corretamente. Veja o diferencial 1 para incrementar este caso de uso;
-- Adicionar um produto no carrinho
-- Realizar checkout
+Acessar a página de login/cadastro.
+Preencher os dados do usuário.
+Verificar a abordagem para o captcha (mock ou solução alternativa).
+Observação: Utilização da biblioteca Faker para criação dos cadastros fictícios.
 
-### Diferenciais
-Além do que foi solicitado, existem itens adicionais para incrementar o projeto final. Você também pode adicionar algum recurso não citado anteriormente.
+Gerar Relatório Automático do Teste
+Descrição: Utilizar Mochawesome para gerar relatórios detalhados e visualmente atraentes em formato HTML.
+Benefícios: Relatórios claros e eficientes, integração fácil com Cypress, personalização de relatórios e compatibilidade com ambientes de CI/CD.
 
-- **Diferencial 1** - Buscar por `shirt` no menu superior e clicar no último resultado sugerido. Se possível, escute o retorno da requisição para saber o momento de clicar na interface;
-- **Diferencial 2** - Criar uma conta na tela de Login/Cadastro. Observe que existe um captcha no formulário, então é necessário decidir como abordar este campo;
-- **Diferencial 3** - Adicionar um produto **aleatório** do catalogo de moda masculina no carrinho;
-- **Diferencial 4** - Adicionar comentário em um produto **aleatório** do catálogo de moda masculina no carrinho;
-- **Diferencial 5** - Gerar um relatório automático do teste.
+4. Tecnologias Usadas
+Linguagem: JavaScript
+Framework de Teste: Cypress
+Plugins: Mochawesome para geração de relatórios
+Biblioteca para Dados Fictícios: Faker
+5. Como Instalar e Usar o Projeto
+Clone o repositório: git clone https://github.com/itnanunes/qa-coodesh-itna
+Navegue até o diretório do projeto: cd luma-store-test
+Instale as dependências: npm install
+Execute os testes: npx cypress open para interface gráfica ou npx cypress run para execução em linha de comando.
+Gere o relatório: npx cypress run --reporter mochawesome.
+6. .gitignore
+Adicionar as seguintes entradas ao .gitignore para evitar versionamento de arquivos desnecessários:
 
-## Readme do Repositório
-
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
-
->  This is a challenge by [Coodesh](https://coodesh.com/)
-
-## Finalização e Instruções para a Apresentação
-
-1. Adicione o link do repositório com a sua solução no teste
-2. Verifique se o Readme está bom e faça o commit final em seu repositório;
-3. Envie e aguarde as instruções para seguir. Sucesso e boa sorte. =)
-
-## Suporte
-
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
-
-
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
+node_modules/
+cypress/videos/
+cypress/screenshots/
+report/
