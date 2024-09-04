@@ -11,7 +11,7 @@ Cypress.Commands.add('searchAddProductToCart', (productName, quantity) => {
 });
 
 Cypress.Commands.add('fillCheckoutForm', (data) => {
-    cy.get('#customer-email').type(data.email);
+    cy.get('#customer-email').should('be.visible').type(data.email);
     cy.get('input[name="firstname"]').should('be.visible').type(data.firstname);
     cy.get('input[name="lastname"]').should('be.visible').type(data.lastname);
     cy.get('input[name="company"]').should('be.visible').type(data.company);
@@ -52,9 +52,12 @@ Cypress.Commands.add('searchAndAddProductToCart', (searchTerm, quantity) => {
 
 // Comando para selecionar um item aleatório de uma lista
 Cypress.Commands.add('selectRandomItem', (selector) => {
-  cy.get(selector).then($items => {
-    const randomIndex = Math.floor(Math.random() * $items.length);
-    cy.wrap($items[randomIndex]).click();
+  cy.get(selector).should('be.visible').then($items => {
+    if ($items.length > 0) {
+      const randomIndex = Math.floor(Math.random() * $items.length);
+      cy.wait(1000);
+      cy.wrap($items.eq(randomIndex)).should('be.visible').click()
+    }
   });
 });
 

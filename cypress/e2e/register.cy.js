@@ -10,13 +10,13 @@ describe('Cadastro - Luma Store', () => {
 
   afterEach(() => {
     cy.fillRegisterForm(); // Preenche o formulário com dados fictícios
-    cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
+    cy.get('#form-validate > .actions-toolbar > div.primary > .action').should('be.visible').click()
     cy.get('.message-success').should('be.visible')
   });
 
   it('Criando cadastro na tela de login', () => {
-    cy.get('.panel > .header > .authorization-link > a').click();
-    cy.get('a.action.create.primary').click();
+    cy.get('.panel > .header > .authorization-link > a').should('be.visible').click();
+    cy.get('a.action.create.primary').should('be.visible').click();
   });
 
   it('Criando cadastro clicando no botão de cadastro', () => {
